@@ -1,0 +1,2 @@
+- når den er startet skal play hedde stop
+- hvorfor spiller første step ikke? 

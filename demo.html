@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to optimize CPU usage</title>
+</head>
+<body>
+
+  <a href="#" id="playButton">Play Note</a> <br><br>
+  <a href="#" id="stopButton">Stop Note</a>
+
+  <script>
+    class Synth {
+      constructor () {
+        this.context = new AudioContext();
+        this.osc = this.context.createOscillator();
+        this.osc.connect(this.context.destination);
+      }
+
+      play(freq) {
+        this.osc.frequency.value = freq;
+        this.osc.start(0);
+      }
+
+      stop() {
+        this.osc.stop(0);
+      }
+    }
+
+    let synth = new Synth();
+
+    const playButton = document.getElementById('playButton')
+      .addEventListener('click', () => {synth.play(440)});
+    
+      const stopButton = document.getElementById('stopButton')
+      .addEventListener('click', () => {synth.stop()}); 
+  </script>
+</body>
+</html>

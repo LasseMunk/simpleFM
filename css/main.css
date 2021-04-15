@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f9eacb;
+  color: 333;
+  font-family: "Lato", sans-serif;
+}
+h1 {
+  margin-top: 5vh;
+  margin-bottom: 1rem;
+}
+.light-color {
+  color: #a0a0a0;
+}
+
+.dark-color {
+  color: #333;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 375px;
+  margin: auto;
+  overflow: hidden;
+  
+}
+
+.btn {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5rem;
+  border: 1px dashed #ff0000;
+  background: #f9eacb;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  background: #ff0000;
+  color: #f9eacb;
+}
+
+.btn:focus,
+.btn:visited,
+.btn:active {
+  border: 1px dashed #ff0000;
+  outline: none;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px dashed red;
+  /* margin-top: 1vh; */
+  padding: 0.5rem;
+  width: 100%;
+  height: 8vh;
+}
+
+/* step sequencer inputs */
+.seq-bar {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1vw;
+  height: 40vh;
+  width: 100%;
+}
+
+.step {
+  outline: 1px dashed red;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 2px;
+}
+
+.current-step {
+  outline: 2px solid red;
+}
+
+#current-step-number {
+  background: #f9eacb;
+  color: #333;
+}
+
+/* hide browers default checkbox */
+.step input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+/* custom checkbox */
+.step .step-style {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f9eacb;
+}
+/* On mouse-over */
+.step:hover input ~ .step-style {
+  background-color: #f4f4f4;
+}
+/* When the checkbox is checked */
+/* step style preceded by an input:checked */
+.step input:checked ~ .step-style {
+  background-color: #ccc;
+  /* border: 1px solid red; */
+}
+
+/* Create the step-style/indicator (hidden when not checked) */
+.step-style:after {
+  /* position: absolute; */
+
+  /* top: 40px; */
+  font-size: 2rem;
+
+  color: #f4f4f4;
+  content: "";
+  display: none;
+}
+
+/* Show the step-style when checked */
+.step input:checked ~ .step-style:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: auto; */
+}
+
+/* Style the step-style/indicator */
+.step .step-style:after {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+  /* transform: translate(-1, -1); */
+}
+
+#slider-container {
+  display: flex;
+  height: 170px;
+}
+
+.v-slider-labels {
+margin: auto;
+margin-top: 5px;
+margin-right: 5px;  
+}
+.v-slider-labels p {
+  margin-bottom: 8px;
+}
+
+.v-slider {
+  /* transform: rotate(-90deg); */
+  padding-top: 0.5rem;
+  width: 100%;
+  height: 100%;
+
+}
+.v-slider input {
+
+  outline: 1px dashed #eee;
+}
+
+
+
+/* random input a lot of styling... */
+input[type="range"] {
+  width: 100%;
+  margin: -3.2px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus {
+  outline: 1px dashed #eee;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #ff0000;
+
+  width: 100%;
+  height: 26.4px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  margin-top: 2px;
+  width: 4px;
+  height: 22px;
+  /* background: #eeeeee; */
+  background: #ddd;
+
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  /* background: #ff8585; */
+}
+input[type="range"]::-moz-range-track {
+  background: #ff0000;
+
+  width: 100%;
+  height: 26.4px;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  /* background: #eeeeee; */
+  background: #333;
+
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 0.9px 0;
+  color: transparent;
+  width: 100%;
+  height: 26.4px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #7a0000;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #ff0000;
+}
+input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: #eeeeee;
+
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #ff0000;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ff8585;
+}
+
+@supports (-ms-ime-align: auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type="range"] {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+}

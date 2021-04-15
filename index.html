@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+ 
+  </style>
+  <title>Simple FM</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Simple FM</h1>
+    <div class="controls">
+      <a href="#" id="playButton" class="btn">PLAY</a>
+      
+      <div id="bpm-input">
+        <Label>BPM: &nbsp;</Label>
+        <input type="number" id="bpm-input-number" class="btn" step="0.1" min="30" max="180" value="130">
+      </div>  
+    </div>
+  </div>
+
+  <section id="seq-container" class="container"> 
+    <!-- seq-bars inserted through JS -->
+  </section>
+
+  <section id="slider-container" class="container">
+    <div class="v-slider-labels">
+      <p>cFreq</p>
+      <p>hRatio</p>
+      <p>mIndex</p>
+      <p>attack</p>
+      <p>decay</p>
+      <p>mVol</p>
+    </div>
+    <div class="v-slider">
+      <input type="range" min="220" max="880" step="0.01" value="220" id="slider-cFreq">
+      <input type="range" min="0.01" max="11" step="0.01" value="0.36" id="slider-hRatio">
+      <input type="range" min="0.1" max="7" step="0.01" value="3.5" id="slider-mIndex">
+      <input type="range" min="0.005" max="0.2" step="0.01" value="0.005" id="slider-attack">
+      <input type="range" min="0.05" max="1" step="0.01" value="0.2" id="slider-decay">
+      <input type="range" min="0.00" max="1" step="0.01" value="1" id="slider-mGain">
+    </div>
+  </section>
+
+  <script src="js/audioctx.js"></script>
+  <script src="js/synth.js"></script>
+  <script src="js/seq.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
