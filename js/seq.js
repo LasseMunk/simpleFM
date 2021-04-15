@@ -2,25 +2,6 @@
   the audio worker with the The setTimeout timer basically just checks to see if any notes are going to need to be scheduled “soon” based on the current tempo, and then schedules them, like so:
 
   I’m not keeping track of “sequence time” - that is, time since the beginning of starting the metronome. All we have to do is remember when we played the last note, and figure out when the next note is scheduled to play. That way, we can change the tempo (or stop playing) very easily.
-
-  requestAnimationFrame som checker hvad audioContext.currenTime
-  for at sync'e grafik til lyd bedst muligt. 
-
-
-  Når du indkoder en step, så refererer den til hvor langt vi er i step sequencen 
-
-
-  Kaldet siger: 'næste frame er ca. her i den globale tid, hvis din egen tid er før framen, så skal du schedule dig selv relativt til tempo, placering i sequencen mv.
-  Hvis du er schedulet skal du sætte et 'er schedulet flag' så du ikke scheduler dig selv dobbelt'.  
-
-  Hvert step finder ud af i sekunder hvornår det skal schedules
-   - afhængigt af tempo, notevalue
-  Lav array af tidspunkter de skal schedules
-  hvert interval checkes om de snart skal schedules
-    - ryd tidligere schedules
-    - add nye schedules
-
-
 */
 class Sequencer {
   constructor() {
@@ -152,7 +133,7 @@ class Sequencer {
       this.stepsSettings[nextTrigger].isScheduled === false) {
         
         this.stepsSettings[nextTrigger].isScheduled = true;
-        timeDiff = actx.currentTime + (this.stepsSettings[nextTrigger].trigTime - currentTime);
+        timeDiff = actx.currentTime + (this.barValue - currentTime);
         
         playVoice(timeDiff);
     }
@@ -204,3 +185,4 @@ class Sequencer {
 
 
 let seq = new Sequencer();
+
