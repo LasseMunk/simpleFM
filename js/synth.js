@@ -36,7 +36,6 @@ class SimpleFM {
   }
 
   trigAD(attackTime, decayTime, rampType, time) {
-    console.log(`current: ${actx.currentTime} time: ${time}`);
     // time: time to trigger AD
     // type: exp or linear
     if(rampType === 'linear') {
