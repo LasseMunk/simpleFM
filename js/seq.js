@@ -3,6 +3,9 @@
 
   I’m not keeping track of “sequence time” - that is, time since the beginning of starting the metronome. All we have to do is remember when we played the last note, and figure out when the next note is scheduled to play. That way, we can change the tempo (or stop playing) very easily.
 */
+
+console.log('yolo');
+
 class Sequencer {
   constructor() {
     this.seqWorker = new Worker("js/seqWorker.js");

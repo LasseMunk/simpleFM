@@ -1,16 +1,18 @@
 // Get Controls Interface IDs
+let hasPlayed = false;
 
 document.getElementById('playButton')
-        // .addEventListener('click', () => synth.play(0.05, 0.5, 'linear', false)),
         .addEventListener('click', (e) => {
           
           let transportState = e.target.firstChild.data;
 
           if(transportState === 'PLAY') {
             e.target.firstChild.data = 'STOP';
-            if(actx.state === 'suspended') {
+            if(hasPlayed === false) {
+              hasPlayed = true;
               actx.resume().then(() => {
                 console.log('AudioContext resumed');
+                playSilentBuffer();
                 synthArr.forEach(synth => {
                   synth.start();
                 });
@@ -25,10 +27,33 @@ document.getElementById('playButton')
             e.target.firstChild.data = 'PLAY';
             seq.stop();
           }
-          
-
-          // start sequencer
         });
+// document.getElementById('playButton')
+//         .addEventListener('touchstart', (e) => {
+          
+//           let transportState = e.target.firstChild.data;
+
+//           if(transportState === 'PLAY') {
+//             e.target.firstChild.data = 'STOP';
+//             if(actx.state === 'suspended') {
+//               actx.resume().then(() => {
+//                 console.log('AudioContext resumed');
+//                 playSilentBuffer();
+//                 synthArr.forEach(synth => {
+//                   synth.start();
+//                 });
+//                 seq.start();
+//               })
+//             } else {
+//               seq.start();
+//             }
+//           }
+
+//           if(transportState === 'STOP') {
+//             e.target.firstChild.data = 'PLAY';
+//             seq.stop();
+//           }
+//         });
 
 document.getElementById('bpm-input-number')
         .addEventListener('change', (e) => {

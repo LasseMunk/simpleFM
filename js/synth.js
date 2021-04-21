@@ -30,22 +30,22 @@ class SimpleFM {
 
     this.modAmp.connect(this.cFreqAdd);
     this.cFreqAdd.connect(this.oscCarrier.frequency);
-    this.oscCarrier .connect(this.ampEnv)
-                    .connect(this.mGain)
-                    .connect(actx.destination);
+    this.oscCarrier.connect(this.ampEnv);
+    this.ampEnv.connect(this.mGain);
+    this.mGain.connect(actx.destination);
   }
 
   trigAD(attackTime, decayTime, rampType, time) {
     // time: time to trigger AD
     // type: exp or linear
     if(rampType === 'linear') {
-      this.ampEnv.gain.cancelAndHoldAtTime(time);
+      // this.ampEnv.gain.cancelAndHoldAtTime(time);
       this.ampEnv.gain.setValueAtTime(this.ampEnv.gain.value, time);
       this.ampEnv.gain.linearRampToValueAtTime(1, time + attackTime);
       this.ampEnv.gain.linearRampToValueAtTime(0, time + attackTime + decayTime);
     } else {
       // default to exponential envelope
-      this.ampEnv.gain.cancelAndHoldAtTime(time);
+      // this.ampEnv.gain.cancelAndHoldAtTime(time);
       this.ampEnv.gain.setValueAtTime(0, time);
       this.ampEnv.gain.linearRampToValueAtTime(1, time + attackTime);
       this.ampEnv.gain.linearRampToValueAtTime(0.000000000001, time + attackTime + decayTime);
@@ -96,6 +96,8 @@ let currentSynthVoice = 0;
 for(let i = 0; i < synthVoices; i++) {
   synthArr[i] = new SimpleFM();
 }
+
+console.log('synth loaded');
 
 playVoice = (time) => {
   synthArr[currentSynthVoice].play(
